@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class Form1
+Partial Class FormQuiz
     Inherits System.Windows.Forms.Form
 
     'Form reemplaza a Dispose para limpiar la lista de componentes.
@@ -25,7 +25,6 @@ Partial Class Form1
         Me.components = New System.ComponentModel.Container()
         Me.LabelPregunta = New System.Windows.Forms.Label()
         Me.ButtonResponder = New System.Windows.Forms.Button()
-        Me.RadioButton1 = New System.Windows.Forms.RadioButton()
         Me.RadioButton2 = New System.Windows.Forms.RadioButton()
         Me.RadioButton3 = New System.Windows.Forms.RadioButton()
         Me.RadioButton4 = New System.Windows.Forms.RadioButton()
@@ -33,6 +32,7 @@ Partial Class Form1
         Me.LabelTiempo = New System.Windows.Forms.Label()
         Me.Timer2 = New System.Windows.Forms.Timer(Me.components)
         Me.LabelNumeroPregunta = New System.Windows.Forms.Label()
+        Me.RadioButton1 = New System.Windows.Forms.RadioButton()
         Me.SuspendLayout()
         '
         'LabelPregunta
@@ -54,18 +54,6 @@ Partial Class Form1
         Me.ButtonResponder.TabIndex = 1
         Me.ButtonResponder.Text = "Enviar"
         Me.ButtonResponder.UseVisualStyleBackColor = True
-        '
-        'RadioButton1
-        '
-        Me.RadioButton1.AutoSize = True
-        Me.RadioButton1.Font = New System.Drawing.Font("Arial Rounded MT Bold", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.RadioButton1.Location = New System.Drawing.Point(57, 301)
-        Me.RadioButton1.Name = "RadioButton1"
-        Me.RadioButton1.Size = New System.Drawing.Size(167, 28)
-        Me.RadioButton1.TabIndex = 2
-        Me.RadioButton1.TabStop = True
-        Me.RadioButton1.Text = "RadioButton1"
-        Me.RadioButton1.UseVisualStyleBackColor = True
         '
         'RadioButton2
         '
@@ -133,23 +121,36 @@ Partial Class Form1
         Me.LabelNumeroPregunta.TabIndex = 8
         Me.LabelNumeroPregunta.Text = "Label1"
         '
-        'Form1
+        'RadioButton1
+        '
+        Me.RadioButton1.AutoSize = True
+        Me.RadioButton1.Checked = True
+        Me.RadioButton1.Font = New System.Drawing.Font("Arial Rounded MT Bold", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.RadioButton1.Location = New System.Drawing.Point(57, 301)
+        Me.RadioButton1.Name = "RadioButton1"
+        Me.RadioButton1.Size = New System.Drawing.Size(167, 28)
+        Me.RadioButton1.TabIndex = 2
+        Me.RadioButton1.TabStop = True
+        Me.RadioButton1.Text = "RadioButton1"
+        Me.RadioButton1.UseVisualStyleBackColor = True
+        '
+        'FormQuiz
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.Peru
         Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.Controls.Add(Me.RadioButton1)
         Me.Controls.Add(Me.LabelNumeroPregunta)
         Me.Controls.Add(Me.LabelTiempo)
         Me.Controls.Add(Me.LabelPuntaje)
         Me.Controls.Add(Me.RadioButton4)
         Me.Controls.Add(Me.RadioButton3)
         Me.Controls.Add(Me.RadioButton2)
-        Me.Controls.Add(Me.RadioButton1)
         Me.Controls.Add(Me.ButtonResponder)
         Me.Controls.Add(Me.LabelPregunta)
-        Me.Name = "Form1"
-        Me.Text = "Form1"
+        Me.Name = "FormQuiz"
+        Me.Text = "Formulario sobre Porcentajes"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -157,7 +158,6 @@ Partial Class Form1
 
     Friend WithEvents LabelPregunta As Label
     Friend WithEvents ButtonResponder As Button
-    Friend WithEvents RadioButton1 As RadioButton
     Friend WithEvents RadioButton2 As RadioButton
     Friend WithEvents RadioButton3 As RadioButton
     Friend WithEvents RadioButton4 As RadioButton
@@ -165,4 +165,5 @@ Partial Class Form1
     Friend WithEvents LabelTiempo As Label
     Friend WithEvents Timer2 As Timer
     Friend WithEvents LabelNumeroPregunta As Label
+    Friend WithEvents RadioButton1 As RadioButton
 End Class

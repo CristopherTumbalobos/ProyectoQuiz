@@ -1,61 +1,46 @@
-﻿Public Class Form1
-    Private preguntas As New List(Of Pregunta)
+﻿Public Class FormQuiz
+    Private preguntas As List(Of Pregunta)
+    Private tema As String
     Private preguntaActual As Integer = 0
     Private puntaje As Integer = 0
     Private tiempoRestante As Integer = 30
 
     Friend WithEvents Timer1 As Timer
 
-    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Public Sub New(preguntasTema As List(Of Pregunta), nombreTema As String)
+        InitializeComponent()
+        Me.StartPosition = FormStartPosition.CenterScreen
+        preguntas = preguntasTema
+        tema = nombreTema
+    End Sub
+
+    Private Sub FormQuiz_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Me.Text = "Quiz de " & tema
+        LabelPuntaje.Text = "Puntaje: 0"
         Timer1 = New Timer()
         Timer1.Interval = 1000 ' 1 segundo
         AddHandler Timer1.Tick, AddressOf Timer1_Tick
 
-        ' Hacer que el botón Enviar se active con Enter
-        Me.AcceptButton = ButtonResponder
-
-        ' Centrar el texto del label de la pregunta
-        LabelPregunta.TextAlign = ContentAlignment.MiddleCenter
-
-        ' Inicializar el puntaje en el label
-        LabelPuntaje.Text = "Puntaje: 0"
-
-        ' Pregunta 1
-        preguntas.Add(New Pregunta With {
-        .Texto = "¿Cuál es el 25% de 200?",
-        .Opciones = New List(Of String) From {"25", "50", "100", "75"},
-        .RespuestaCorrecta = 1 ' 50
-    })
-
-        ' Pregunta 2
-        preguntas.Add(New Pregunta With {
-        .Texto = "Si tienes 80 manzanas y regalas el 10%, ¿cuántas manzanas regalas?",
-        .Opciones = New List(Of String) From {"8", "10", "18", "80"},
-        .RespuestaCorrecta = 0 ' 8
-    })
-
-        ' Pregunta 3
-        preguntas.Add(New Pregunta With {
-        .Texto = "¿Qué porcentaje es 30 de 120?",
-        .Opciones = New List(Of String) From {"10%", "20%", "25%", "30%"},
-        .RespuestaCorrecta = 2 ' 25%
-    })
-
-        ' Mezclar las preguntas
         preguntas = preguntas.OrderBy(Function(x) Guid.NewGuid()).ToList()
-
         MostrarPregunta()
     End Sub
 
     Private Sub MostrarPregunta()
-        ' Actualizar el número de pregunta
-        LabelNumeroPregunta.Text = "PREGUNTA " & (preguntaActual + 1).ToString()
+        ' Deshabilitar el botón hasta que se seleccione una opción
+        ButtonResponder.Enabled = False
+
+        ' Mover el foco fuera de los RadioButton para poder desmarcarlos todos correctamente
+        ButtonResponder.Focus()
+        Application.DoEvents()
 
         ' Limpiar selección de opciones
         RadioButton1.Checked = False
         RadioButton2.Checked = False
         RadioButton3.Checked = False
         RadioButton4.Checked = False
+
+        ' Actualizar el número de pregunta
+        LabelNumeroPregunta.Text = "PREGUNTA " & (preguntaActual + 1).ToString()
 
         ' Muestra la pregunta en el label
         LabelPregunta.Text = preguntas(preguntaActual).Texto
@@ -121,6 +106,7 @@
         Else
             MessageBox.Show("¡Quiz terminado! Puntaje: " & puntaje)
             ButtonResponder.Text = "Salir"
+            ButtonResponder.Enabled = True
             ' Opcional: deshabilitar los RadioButton para evitar más respuestas
             RadioButton1.Enabled = False
             RadioButton2.Enabled = False
@@ -141,7 +127,7 @@
 
     End Sub
 
-    Private Sub Form1_Resize(sender As Object, e As EventArgs) Handles Me.Resize
+    Private Sub FormQuiz_Resize(sender As Object, e As EventArgs) Handles Me.Resize
         CentrarLabelPregunta()
         CentrarOpciones()
     End Sub
@@ -172,7 +158,13 @@
         RadioButton4.Left = RadioButton3.Left + RadioButton3.Width + espacio
     End Sub
 
-    Private Sub Form1_FormClosed(sender As Object, e As FormClosedEventArgs) Handles Me.FormClosed
+    Private Sub FormQuiz_FormClosed(sender As Object, e As FormClosedEventArgs) Handles Me.FormClosed
         FormMenu.Show()
+    End Sub
+
+    Private Sub RadioButton_CheckedChanged(sender As Object, e As EventArgs) _
+        Handles RadioButton1.CheckedChanged, RadioButton2.CheckedChanged, RadioButton3.CheckedChanged, RadioButton4.CheckedChanged
+
+        ButtonResponder.Enabled = RadioButton1.Checked Or RadioButton2.Checked Or RadioButton3.Checked Or RadioButton4.Checked
     End Sub
 End Class
