@@ -47,6 +47,7 @@ Partial Class FormMenu
         Me.ButtonPorcentajes.Name = "ButtonPorcentajes"
         Me.ButtonPorcentajes.Size = New System.Drawing.Size(111, 46)
         Me.ButtonPorcentajes.TabIndex = 1
+        Me.ButtonPorcentajes.TabStop = False
         Me.ButtonPorcentajes.Text = "Button1"
         Me.ButtonPorcentajes.UseVisualStyleBackColor = True
         '
@@ -57,6 +58,7 @@ Partial Class FormMenu
         Me.ButtonDecimales.Name = "ButtonDecimales"
         Me.ButtonDecimales.Size = New System.Drawing.Size(111, 46)
         Me.ButtonDecimales.TabIndex = 2
+        Me.ButtonDecimales.TabStop = False
         Me.ButtonDecimales.Text = "Button2"
         Me.ButtonDecimales.UseVisualStyleBackColor = True
         '
@@ -67,6 +69,7 @@ Partial Class FormMenu
         Me.ButtonFracciones.Name = "ButtonFracciones"
         Me.ButtonFracciones.Size = New System.Drawing.Size(111, 46)
         Me.ButtonFracciones.TabIndex = 3
+        Me.ButtonFracciones.TabStop = False
         Me.ButtonFracciones.Text = "Button3"
         Me.ButtonFracciones.UseVisualStyleBackColor = True
         '
@@ -86,6 +89,7 @@ Partial Class FormMenu
         Me.ButtonSalirMenu.Name = "ButtonSalirMenu"
         Me.ButtonSalirMenu.Size = New System.Drawing.Size(111, 46)
         Me.ButtonSalirMenu.TabIndex = 5
+        Me.ButtonSalirMenu.TabStop = False
         Me.ButtonSalirMenu.Text = "Button4"
         Me.ButtonSalirMenu.UseVisualStyleBackColor = True
         '

@@ -10,6 +10,7 @@
     Public Sub New(preguntasTema As List(Of Pregunta), nombreTema As String)
         InitializeComponent()
         Me.StartPosition = FormStartPosition.CenterScreen
+        Me.AcceptButton = ButtonResponder
         preguntas = preguntasTema
         tema = nombreTema
     End Sub
@@ -167,4 +168,13 @@
 
         ButtonResponder.Enabled = RadioButton1.Checked Or RadioButton2.Checked Or RadioButton3.Checked Or RadioButton4.Checked
     End Sub
+
+    Protected Overrides Function ProcessDialogKey(keyData As Keys) As Boolean
+        If keyData = Keys.Enter Then
+            If ButtonResponder.Text <> "Enviar" OrElse Not ButtonResponder.Enabled Then
+                Return True ' Ignora Enter si no está en modo "Enviar"
+            End If
+        End If
+        Return MyBase.ProcessDialogKey(keyData)
+    End Function
 End Class

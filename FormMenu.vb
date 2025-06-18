@@ -61,6 +61,10 @@
         CentrarBotonesTemas()
     End Sub
 
+    Private Sub FormMenu_Activated(sender As Object, e As EventArgs) Handles Me.Activated
+        LabelAutor.Focus()
+    End Sub
+
     Private Sub FormMenu_Resize(sender As Object, e As EventArgs) Handles Me.Resize
         AjustarAnchoLabelInstrucciones()
         CentrarLabelInstrucciones()
